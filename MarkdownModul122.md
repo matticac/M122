@@ -1,13 +1,13 @@
 # Modul 122
 
-Das ist mein Markdown Dokument
+Das ist mein erstes Markdown Dokument
 
 
 ## Abschnitt 1: Was ich am 18.09 gemacht habe:
 
 Zuerst habe ich damit ich in VSC PS Verwenden kann die 2 Extetion herunergeldaen und Eine PS1 Datei erstellt und getestet.
 Das hat dann funktioniert und so ausgesehen:
-![alt text](<VSC funktioniert-1.png>)
+![alt text](image.png)
 
 Danach habe ich mich über Markdown informiert.
 Dann habe ich meine erste Datei erstellt. Die hat etwa so ausgesehen:
