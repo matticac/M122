@@ -1,5 +1,6 @@
 Das Skript kann Ausgeführt werden ohne das Direkt ein Backup Gestartet wird
 Man braucht keinen Admin damit das Skript Funktioniert.
+Wenn Das Backup gestartet ist kann man Normal weiterarbeiten und man bekommt eine Benachrichtigung wenn Das Backup abgeschlossen ist.
 
 Funktionalitäten:
 1.0 Quellordner
@@ -17,7 +18,7 @@ Da kann man markieren welche Dateien Gespeicherd werden sollen.
 5.0 Modus
 
 Smart: 
-da macht er automatisch immer wieder Backupts 
+er überlegt selber ob ein Full oder ein Inkrementel sinnvoller ist wenn es keines gibt oder das letzte Full eine Woche her ist macht der das Full Backup
 
 Vollständig:
 Er macht ein Komplettes Backup
