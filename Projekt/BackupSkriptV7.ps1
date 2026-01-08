@@ -1,10 +1,9 @@
 # ================================================================
-# Office Backup System - Final Edition v4.7 (Layout Fix)
+# Office Backup System - Final Edition v4.8 (VS Code Fix)
 # ================================================================
-# Fix: GUI-Elemente verbreitert (kein abgeschnittener Text mehr)
-# Feature: ZIP-Komprimierung (Spart Platz & schneller Upload)
-# Feature: Windows Benachrichtigungen (Popup)
-# Feature: Cleanup & SSH Automatisierung
+# Fix: Font-Overload Fehler in VS Code behoben (explizite Typen)
+# Feature: Layout angepasst (nichts abgeschnitten)
+# Feature: ZIP-Komprimierung & Cleanup
 # Autor: M122
 # ================================================================
 
@@ -217,7 +216,7 @@ function Start-BackupProcess {
 
 function Show-MainGUI {
     $form = New-Object System.Windows.Forms.Form
-    $form.Text = "Office Backup System v4.7 (Layout Fix)"; $form.Size="800,850"; $form.StartPosition="CenterScreen"; $form.FormBorderStyle="FixedDialog"; $form.MaximizeBox=$false
+    $form.Text = "Office Backup System v4.8 (VS Code Ready)"; $form.Size="800,850"; $form.StartPosition="CenterScreen"; $form.FormBorderStyle="FixedDialog"; $form.MaximizeBox=$false
     
     $tabs = New-Object System.Windows.Forms.TabControl; $tabs.Size="760,680"; $tabs.Location="10,10"
     
@@ -243,7 +242,6 @@ function Show-MainGUI {
     $grpEx.Controls.AddRange(@($txtEx, $btnEx))
     
     $grpTyp = New-Object System.Windows.Forms.GroupBox; $grpTyp.Text="4. Dateitypen"; $grpTyp.Location="15,310"; $grpTyp.Size="720,80"
-    # KORREKTUR: Breitere Checkboxen für lange Namen (z.B. PowerPoint)
     $chkW=New-Object System.Windows.Forms.CheckBox;$chkW.Text="Word";$chkW.Location="20,25";$chkW.Size="100,20";$chkW.Checked=$script:BackupConfig.FileTypes.Word
     $chkE=New-Object System.Windows.Forms.CheckBox;$chkE.Text="Excel";$chkE.Location="130,25";$chkE.Size="100,20";$chkE.Checked=$script:BackupConfig.FileTypes.Excel
     $chkP=New-Object System.Windows.Forms.CheckBox;$chkP.Text="PowerPoint";$chkP.Location="240,25";$chkP.Size="120,20";$chkP.Checked=$script:BackupConfig.FileTypes.PowerPoint
@@ -251,12 +249,10 @@ function Show-MainGUI {
     $grpTyp.Controls.AddRange(@($chkW,$chkE,$chkP,$chkD))
     
     $grpMod = New-Object System.Windows.Forms.GroupBox; $grpMod.Text="5. Modus & Optionen"; $grpMod.Location="15,400"; $grpMod.Size="720,80"
-    # KORREKTUR: Mehr Abstand und breitere RadioButtons für Texte
     $radS=New-Object System.Windows.Forms.RadioButton;$radS.Text="Smart (Auto)";$radS.Location="20,30";$radS.Size="120,20";$radS.Checked=($script:BackupConfig.BackupMode -eq "Smart")
     $radF=New-Object System.Windows.Forms.RadioButton;$radF.Text="Vollständig";$radF.Location="150,30";$radF.Size="120,20";$radF.Checked=($script:BackupConfig.BackupMode -eq "Full")
     $radI=New-Object System.Windows.Forms.RadioButton;$radI.Text="Inkrementell";$radI.Location="280,30";$radI.Size="120,20";$radI.Checked=($script:BackupConfig.BackupMode -eq "Incremental")
     
-    # KORREKTUR: Zip Checkbox verbreitert
     $chkZip=New-Object System.Windows.Forms.CheckBox;$chkZip.Text="Als ZIP speichern";$chkZip.Location="420,30";$chkZip.Size="180,20";$chkZip.Checked=$script:BackupConfig.UseZip
     $chkZip.ForeColor="DarkBlue"
     
@@ -385,7 +381,7 @@ function Show-MainGUI {
 # SETUP (NUR BEIM ERSTEN MAL)
 function Show-SetupWizard {
     $wiz = New-Object System.Windows.Forms.Form; $wiz.Text="Backup Setup"; $wiz.Size="500,600"; $wiz.StartPosition="CenterScreen"; $wiz.FormBorderStyle="FixedDialog"; $wiz.MaximizeBox=$false
-    $l1=New-Object System.Windows.Forms.Label;$l1.Text="Backup Konfiguration";$l1.Font=New-Object System.Drawing.Font("Arial",12,1);$l1.Location="20,20";$l1.Size="400,30"
+    $l1=New-Object System.Windows.Forms.Label;$l1.Text="Backup Konfiguration";$l1.Font=New-Object System.Drawing.Font("Arial",12,[System.Drawing.FontStyle]::Bold);$l1.Location="20,20";$l1.Size="400,30"
     
     $g1=New-Object System.Windows.Forms.GroupBox;$g1.Text="Quelle";$g1.Location="20,60";$g1.Size="440,70"
     $t1=New-Object System.Windows.Forms.TextBox;$t1.Text=[Environment]::GetFolderPath("MyDocuments");$t1.Location="20,30";$t1.Size="300,20"
