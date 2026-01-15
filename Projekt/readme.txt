@@ -1,41 +1,45 @@
-Das Skript kann Ausgeführt werden ohne das Direkt ein Backup Gestartet wird
-Man braucht keinen Admin damit das Skript Funktioniert.
-Wenn Das Backup gestartet ist kann man Normal weiterarbeiten und man bekommt eine Benachrichtigung wenn Das Backup abgeschlossen ist.
+# Office Backup System
 
-Funktionalitäten:
-1.0 Quellordner
-da kann man aussuchen welcher ordner und höher Gebackupt wird.
+Ein umfassendes Backup-Tool für Office-Dokumente mit GUI, Speicherplatz-Prüfung und VM-Upload Funktion.
 
-2.0 Zielordner
-Da kann man aussuchen in welchen Ordner man möchte das das Backup gespeicherd wird.
+## Allgemeine Informationen
+* **Start:** Das Skript kann ausgeführt werden, ohne dass direkt ein Backup gestartet wird (es öffnet sich eine Benutzeroberfläche).
+* **Rechte:** Es werden **keine Administrator-Rechte** benötigt, damit das Skript funktioniert.
+* **Hintergrund-Prozess:** Wenn das Backup gestartet ist, kann normal weitergearbeitet werden. Man erhält eine Windows-Benachrichtigung, sobald das Backup abgeschlossen ist.
 
-3.0 Ausnahmen
-Da kann man einen Ordner aussuchen der nicht gebackupet wird. Das ist Wichtig wenn man z.b ein Onedrive angeschlossen hat das man nicht will das ganze nochmals gespeicherd wird.
+---
 
-4.0 Dateitypen 
-Da kann man markieren welche Dateien Gespeicherd werden sollen.
+## Funktionalitäten
 
-5.0 Modus
+### 1.0 Quellordner
+Hier kann ausgewählt werden, welcher Ordner (und dessen Unterordner) gesichert werden soll. Es können mehrere Quellordner hinzugefügt werden.
 
-Smart: 
-er überlegt selber ob ein Full oder ein Inkrementel sinnvoller ist wenn es keines gibt oder das letzte Full eine Woche her ist macht der das Full Backup
+### 2.0 Zielordner
+Hier kann ausgewählt werden, in welchem Ordner das Backup gespeichert werden soll.
 
-Vollständig:
-Er macht ein Komplettes Backup
+### 3.0 Ausnahmen
+Hier können Ordnernamen definiert werden, die **nicht** gesichert werden sollen.
+* *Wichtig:* Dies ist nützlich, wenn man z.B. einen OneDrive-Ordner eingebunden hat, aber nicht möchte, dass dieser nochmals lokal gesichert wird (Vermeidung von Dopplungen oder Endlosschleifen).
 
-Inkrementael
-Er Speichert alles was seit dem Letzten Vollständigen Backup neu ist. Falls keines gibt macht er ein Vollständiges.
+### 4.0 Dateitypen
+Hier kann markiert werden, welche Dateitypen genau gesichert werden sollen (z.B. nur Word & Excel, oder alles).
 
-Historie:
-wenn man unten auf Aktualisieren Klickt dann siht man wann welches Backup gemacht wurde
+### 5.0 Modus
 
+* **Smart (Auto):** Das System entscheidet selbstständig. Wenn kein Backup existiert oder das letzte Voll-Backup älter als eine Woche ist, wird ein **Full Backup** erstellt. Ansonsten ein inkrementelles.
+* **Vollständig:** Erstellt zwingend ein komplettes Backup aller Dateien.
+* **Inkrementell:** Speichert nur Dateien, die seit dem letzten vollständigen Backup neu hinzugekommen oder geändert wurden. (Falls kein Basis-Backup existiert, wird automatisch ein vollständiges erstellt).
 
+---
 
-Tools & VM
+## Weitere Tabs & Funktionen
 
-Da kann man seine VM oder sonst eine Externe Adresse eingeben auf die der Laptop verbinden kann wenn man die Backups auf einer VM Speichern will.
+### Historie
+Im Reiter "Historie" kann man unten auf **Aktualisieren** klicken. Daraufhin sieht man eine Liste, wann welches Backup erstellt wurde.
 
-Wartung:
+### Tools & VM
+Hier kann eine IP-Adresse einer VM (Virtual Machine) oder eines externen Servers eingegeben werden. Dies ermöglicht es, die lokalen Backups nach Fertigstellung automatisch auf die VM hochzuladen (via SSH/SCP).
 
-Der Knopf Löscht Alle Backups ausser das Aktuelle Full Backup und alle Inkremental Backups die Danach gemacht wurden.
-
+### Wartung
+Der Knopf **"ALTE BACKUPS BEREINIGEN"** dient der Speicherplatz-Optimierung.
+* **Funktion:** Er löscht alle alten Backups, **ausser** das aktuellste Full-Backup und alle Inkremental-Backups, die danach gemacht wurden (die aktuelle Sicherungskette bleibt erhalten).
